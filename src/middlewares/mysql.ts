@@ -1,7 +1,7 @@
 import { createConnection, getConnection, ConnectionNotFoundError } from "typeorm";
 import defaultOrmConfig from "../db/ormconfig";
 
-export const connect = async (req, res, next) => {
+export const connect = async (req, res, next): Promise<void> => {
   try {
     await getConnection();
   } catch (e) {
@@ -17,14 +17,14 @@ export const connect = async (req, res, next) => {
   next();
 };
 
-export const close = async (req, res, next) => {
-  try {
-    const connection = await getConnection();
-    await connection.close();
-    console.log('closing connection')
-  } catch (e) {
-    throw new Error(e);
-  }
+// export const close = async (req, res, next): Promise<void> => {
+//   try {
+//     const connection = await getConnection();
+//     await connection.close();
+//     console.log('closing connection')
+//   } catch (e) {
+//     throw new Error(e);
+//   }
 
-  next();
-};
+//   next();
+// };
