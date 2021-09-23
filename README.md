@@ -1,7 +1,7 @@
 # Implementation Details:
 
 ## General Approach
-I wanted to get a working solution first and refactor next. The project was divided into the following are the tasks  
+I wanted to get a working solution first and refactor next. The project was divided into the following tasks  
 - Create the project structure
 - Add all the necessary packages
 - Create an /intent endpoint
@@ -13,12 +13,12 @@ I wanted to get a working solution first and refactor next. The project was divi
 - Linting and adding documentation
  
 ## Architecture Diagram
-
+<img width="416" alt="Basic Arch" src="https://user-images.githubusercontent.com/13963969/134550800-c92341ba-585f-4e61-83d5-cf563aa673b8.png">
 
 ## Datastream API
 - `GET /api/v1/intent` -> returns a reply for the given message.
 
-  Sample Input
+  Sample Request Body
   ```
   {
     "data": {
@@ -31,7 +31,7 @@ I wanted to get a working solution first and refactor next. The project was divi
   }
   ```
 
-  Sample Output
+  Sample Response Body
   ```
   {
     "meta": {},
