@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "build:dev": "tsc -w",
     "start": "nodemon src/server.ts",
-    "test": "jest"
+    "start:dev": "nodemon src/server.ts",
+    "test": "jest",
+    "db": "typeorm --config ./dist/db/ormconfig.js"
   },
   "keywords": [],
   "author": "Akshay Kumar <dhupamakshay.kumar@gmail.com>",
@@ -19,7 +22,8 @@
     "jsonapi-serializer": "^3.6.7",
     "lodash": "^4.17.21",
     "mysql": "^2.18.1",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "2.6.1",
+    "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.37"
   },
   "devDependencies": {
