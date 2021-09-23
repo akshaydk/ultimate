@@ -15,7 +15,7 @@ I wanted to get a working solution first and refactor next. The project was divi
 ## Architecture Diagram
 <img width="416" alt="Basic Arch" src="https://user-images.githubusercontent.com/13963969/134550800-c92341ba-585f-4e61-83d5-cf563aa673b8.png">
 
-## Datastream API
+## API
 - `GET /api/v1/intent` -> returns a reply for the given message.
 
   Sample Request Body
@@ -45,24 +45,44 @@ I wanted to get a working solution first and refactor next. The project was divi
   ```
 
 ## How to run
-```
-// Create a mysql db and update the configs accordingly.
-
-//Build the project
+Create a mysql db and update the configs accordingly.
+Build the project
+```sh
 yarn build
-
-//Runs the migration
-yarn db migration:run
-
-//Start the server in watch mode
-yarn start
-
-//Run tests
-yarn test
-
-//Linting
-yarn eslint
 ```
+
+Runs the migrations
+
+```sh
+yarn db migration:run
+```
+
+Start the server in watch mode
+
+```sh
+yarn start
+```
+
+Run tests
+
+```sh
+yarn test
+```
+
+## Folder Structure
+### A top level brief of structure
+    src
+    ├── controllers            # All the controllers
+    ├── db                     # Migrations and orm config
+    ├── entity                 # Typeorm entities
+    ├── errors                 # Custom errors
+    ├── lib                    # Any third party and first party integrations
+    ├── middlewares            # Just middlewarawes
+    ├── routes                 # Register all the controller with express
+    ├── serializers            # JSONAPI serilizer files
+    ├── services               # Core business logic
+    ├── types                  # Type definitions
+    └── config files
 
 Note: I am disappointed at myself for not maintaining a proper commit history. Pushing everything in one commit is not my style.
 
