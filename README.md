@@ -176,3 +176,5 @@ yarn lint --fix #for fixing all the lint errors
 - Deployment strategy
 - Rate limiting
 - Load testing
+
+Note: My commit messages are usually smaller and cleaner than in the repo. This is something that I am not very proud of.
