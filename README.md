@@ -153,6 +153,11 @@ yarn lint --fix #for fixing all the lint errors
 - ### Docker
   - For the sake of assignment I didn't want to get into the containarizing the application. Ideally, I would be inclined to containarize any application that goes to production.
 
+## Assumptions
+  - In the current solution, I have picked the top object from the response of the public API. It looks like the API response is in the descending order of confidence scores.
+  - The public API is always available, I did not handle the cases when public API id down.
+  - All the replies specific to an intent are available in the db. There is only one reply for every intent. This may not be the case. We can implement different strategies.
+
 ## ToDo
 - Logging
 - Use Inversify for dependecy injection. (felt like an overkill for single API)
@@ -162,10 +167,12 @@ yarn lint --fix #for fixing all the lint errors
 - Database seeder file to load the data
 - API documentation (because there was only one endpoint, I documented everything in README)
 
+## Futuristic Work
+  - Store the top K responses in cache to respond faster to the queires. This may also help us to make less hits to the Public API. Can also serve as a conversational saver whe the public API or DB is down.
+  - Collect feedback from bots and push to the AI engine.
+  - Implement multiple strategies to pick the replies based on the confidence scores.
+
 ## Things I am contemplating 
 - Deployment strategy
 - Rate limiting
 - Load testing
-
-
-Note: I am disappointed at myself for not maintaining a proper commit history. Pushing everything in one commit is not my style.
