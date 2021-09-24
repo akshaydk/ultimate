@@ -1,8 +1,8 @@
-import "./init";
-import express from "express";
-import helmet from "helmet";
-import intent from "./routes/intent";
-import * as mysql from "./middlewares/mysql";
+import './init';
+import express from 'express';
+import helmet from 'helmet';
+import intent from './routes/intent';
+import * as mysql from './middlewares/mysql';
 
 const app = express();
 app.use(helmet());

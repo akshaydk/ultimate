@@ -1,9 +1,9 @@
-import Lib from "jsonapi-serializer";
-import HttpError from "../errors/http-error";
-import { DeserialisedBodyMap, SerializedBodyMap } from "../types/IntentBody";
+import Lib from 'jsonapi-serializer';
+import HttpError from '../errors/http-error';
+import { DeserialisedBodyMap, SerializedBodyMap } from '../types/IntentBody';
 
 export default class Serializer {
-  type: string = '';
+  type = '';
   attributes: Array<string> = [];
   relationships = {};
 
@@ -20,7 +20,7 @@ export default class Serializer {
       });
       return Serializer.serialize(data);
     } catch (e) {
-      throw new HttpError(500, "Internal Server Error");
+      throw new HttpError(500, 'Internal Server Error');
     }
   };
 
@@ -30,10 +30,10 @@ export default class Serializer {
   ): Promise<DeserialisedBodyMap[k]> => {
     try {
       return new Lib.Deserializer({
-        keyForAttribute: "camelCase",
+        keyForAttribute: 'camelCase',
       }).deserialize(data);
     } catch (e) {
-      throw new HttpError(500, "Internal Server Error");
+      throw new HttpError(500, 'Internal Server Error');
     }
   };
 }

@@ -1,7 +1,7 @@
-import Serializer from "../../serializers/intent";
-import httpMocks from "node-mocks-http";
-import Controller from "../../controllers/intent";
-import Service from "../../services/intent";
+import Serializer from '../../serializers/intent';
+import httpMocks from 'node-mocks-http';
+import Controller from '../../controllers/intent';
+import Service from '../../services/intent';
 
 let controller, service, req, res, next;
 
@@ -10,24 +10,24 @@ beforeAll(async () => {
   service = new Service();
 });
 
-describe("#GET", () => {
+describe('#GET', () => {
   beforeEach(() => {
-    jest.spyOn(controller, "_getService").mockImplementationOnce(() => service);
+    jest.spyOn(controller, '_getService').mockImplementationOnce(() => service);
   });
 
-  it("returns 200 and reply on success", async () => {
-    const message = "Hello!";
-    const type = "replies";
-    jest.spyOn(service, "getIntent").mockImplementationOnce(() => message);
+  it('returns 200 and reply on success', async () => {
+    const message = 'Hello!';
+    const type = 'replies';
+    jest.spyOn(service, 'getIntent').mockImplementationOnce(() => message);
 
     req = httpMocks.createRequest({
-      method: "GET",
+      method: 'GET',
       body: {
         data: {
           type: type,
           attributes: {
-            botId: "5f74865056d7bb000fcd39ff",
-            message: "Hello",
+            botId: '5f74865056d7bb000fcd39ff',
+            message: 'Hello',
           },
         },
       },
@@ -40,23 +40,23 @@ describe("#GET", () => {
 
     const data = res._getJSONData();
     expect(res.statusCode).toBe(200);
-    expect(data["data"]["type"]).toBe(type);
-    expect(data["data"]["attributes"]["reply"]).toBe(message);
+    expect(data['data']['type']).toBe(type);
+    expect(data['data']['attributes']['reply']).toBe(message);
   });
 
-  it("returns 422 when bot id is not found", async () => {
-    const message = "Hello!";
-    const type = "replies";
-    jest.spyOn(service, "getIntent").mockImplementationOnce(() => message);
+  it('returns 422 when bot id is not found', async () => {
+    const message = 'Hello!';
+    const type = 'replies';
+    jest.spyOn(service, 'getIntent').mockImplementationOnce(() => message);
 
     req = httpMocks.createRequest({
-      method: "GET",
+      method: 'GET',
       body: {
         data: {
           type: type,
           attributes: {
-            botId: "",
-            message: "Hello",
+            botId: '',
+            message: 'Hello',
           },
         },
       },
@@ -71,12 +71,12 @@ describe("#GET", () => {
   });
 });
 
-describe("#private methods", () => {
-  it("return a service object", () => {
+describe('#private methods', () => {
+  it('return a service object', () => {
     expect(controller._getService()).toBeInstanceOf(Service);
   });
 
-  it("return a Serializer object", () => {
+  it('return a Serializer object', () => {
     expect(controller._getSerializer()).toBeInstanceOf(Serializer);
   });
 });

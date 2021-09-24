@@ -1,18 +1,18 @@
-import fetch from "node-fetch";
-import * as faker from "faker";
-import Lib from "../intent";
+import fetch from 'node-fetch';
+import * as faker from 'faker';
+import Lib from '../intent';
 
 let lib;
-const { Response } = jest.requireActual("node-fetch");
+const { Response } = jest.requireActual('node-fetch');
 
-jest.mock("node-fetch", () => jest.fn());
+jest.mock('node-fetch', () => jest.fn());
 
 beforeAll(() => {
   lib = new Lib();
 });
 
-describe("#Get Intent", () => {
-  it("handles susscessful repsonse from the API", async () => {
+describe('#Get Intent', () => {
+  it('handles susscessful repsonse from the API', async () => {
     const body = {
       botId: faker.datatype.string(10),
       message: faker.datatype.string(10),
@@ -21,11 +21,11 @@ describe("#Get Intent", () => {
       intents: [
         {
           confidence: 0.999990701675415,
-          name: "Greeting",
+          name: 'Greeting',
         },
         {
           confidence: 0.000008325902854267042,
-          name: "Means or need to contact ",
+          name: 'Means or need to contact ',
         },
       ],
     };
@@ -38,32 +38,32 @@ describe("#Get Intent", () => {
     expect(JSON.stringify(res)).toBe(JSON.stringify(expected));
   });
 
-  it("raise and exception with API response bad request", async () => {
+  it('raise and exception with API response bad request', async () => {
     const body = {
       botId: faker.datatype.string(10),
       message: faker.datatype.string(10),
     };
 
     (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-      new Response("", {
+      new Response('', {
         status: 400,
-        statusText: "Bad Request",
+        statusText: 'Bad Request',
       })
     );
 
     expect(async () => { await lib.get(body)}).toThrowError
   });
 
-  it("raise and exception with API response is unauthorized", async () => {
+  it('raise and exception with API response is unauthorized', async () => {
     const body = {
       botId: faker.datatype.string(10),
       message: faker.datatype.string(10),
     };
 
     (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-      new Response("", {
+      new Response('', {
         status: 403,
-        statusText: "Unauthorized",
+        statusText: 'Unauthorized',
       })
     );
 

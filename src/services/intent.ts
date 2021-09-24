@@ -1,13 +1,13 @@
-import Library from "../lib/intent";
-import { Reply } from "../entity/reply";
-import HttpError from "../errors/http-error";
-import { IntentBody } from "../types/IntentBody";
+import Library from '../lib/intent';
+import { Reply } from '../entity/reply';
+import HttpError from '../errors/http-error';
+import { IntentBody } from '../types/IntentBody';
 
 export default class {
   async getIntent(body: IntentBody): Promise<string> {
     const lib = this._getLib();
     const data = await lib.get(body);
-    const intent: string = data["intents"][0]["name"];
+    const intent: string = data['intents'][0]['name'];
 
     return await this._getReply(intent);
   }
@@ -20,11 +20,11 @@ export default class {
         },
       });
       if (!record) {
-        return `Sorry, we could not find what you have asked for.`;
+        return 'Sorry, we could not find what you have asked for.';
       }
       return record.reply;
     } catch (e) {
-      throw new HttpError(500, "Internal Server Error");
+      throw new HttpError(500, 'Internal Server Error');
     }
   }
 

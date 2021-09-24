@@ -5,7 +5,7 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
   BaseEntity,
-} from "typeorm";
+} from 'typeorm';
 
 @Entity()
 export class Reply extends BaseEntity {
@@ -18,9 +18,9 @@ export class Reply extends BaseEntity {
   @Column()
   reply: string;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 }

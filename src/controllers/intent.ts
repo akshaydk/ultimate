@@ -1,9 +1,9 @@
-import { Response, Request } from "express";
-import Serializer from "../serializers/intent";
-import Service from "../services/intent";
-import isEmpty from "lodash/isEmpty";
-import HttpError from "../errors/http-error";
-import { IntentBody } from "../types/IntentBody";
+import { Response, Request } from 'express';
+import Serializer from '../serializers/intent';
+import Service from '../services/intent';
+import isEmpty from 'lodash/isEmpty';
+import HttpError from '../errors/http-error';
+import { IntentBody } from '../types/IntentBody';
 
 export default class Controller {
   intent = async (req: Request, res: Response) : Promise<Response>  => {
@@ -13,16 +13,16 @@ export default class Controller {
 
     try {
       const deserializedBody: IntentBody = await serializer.deserialize(
-        "intentBody",
+        'intentBody',
         body
       );
 
-      if (isEmpty(deserializedBody["botId"])) {
-        throw new HttpError(422, "Bot Id cannot be empty");
+      if (isEmpty(deserializedBody['botId'])) {
+        throw new HttpError(422, 'Bot Id cannot be empty');
       }
 
       const result = await service.getIntent(deserializedBody);
-      const serializedResponse = await serializer.serialize("intentReply", {
+      const serializedResponse = await serializer.serialize('intentReply', {
         reply: result,
       });
 
