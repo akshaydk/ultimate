@@ -6,14 +6,19 @@ import HttpError from '../errors/http-error';
 import { IntentBody } from '../types/IntentBody';
 
 export default class Controller {
+
+  
   intent = async (req: Request, res: Response) : Promise<Response>  => {
+    //ToDo: Use a better way to initialize the stings. Do not hard code.
+    const intentReply = 'intentReply'
+    const intentBody = 'intentBody'
     const service = this._getService();
     const serializer = this._getSerializer();
     const body = req.body;
 
     try {
       const deserializedBody: IntentBody = await serializer.deserialize(
-        'intentBody',
+        intentBody,
         body
       );
 
@@ -22,7 +27,7 @@ export default class Controller {
       }
 
       const result = await service.getIntent(deserializedBody);
-      const serializedResponse = await serializer.serialize('intentReply', {
+      const serializedResponse = await serializer.serialize(intentReply, {
         reply: result,
       });
 
