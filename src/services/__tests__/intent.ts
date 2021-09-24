@@ -40,7 +40,7 @@ describe("getIntent", () => {
 describe("#private methods", () => {
   it("returns a reply if intent is found in db", async () => {
     const reply = "How are you doing today?";
-    let expectedReply = _createReply("Greeting", reply);
+    const expectedReply = _createReply("Greeting", reply);
 
     jest.spyOn(Reply, "findOne").mockResolvedValueOnce(expectedReply);
     const result = await service._getReply("Hello");
@@ -60,7 +60,7 @@ describe("#private methods", () => {
 });
 
 const _createReply = (intent: string, message: string): Reply => {
-  let reply = new Reply();
+  const reply = new Reply();
   reply.intent = intent;
   reply.reply = message;
   return reply;

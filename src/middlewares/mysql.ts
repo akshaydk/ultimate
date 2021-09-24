@@ -1,7 +1,8 @@
 import { createConnection, getConnection, ConnectionNotFoundError } from "typeorm";
+import { Request, Response, NextFunction } from 'express';
 import defaultOrmConfig from "../db/ormconfig";
 
-export const connect = async (req, res, next): Promise<void> => {
+export const connect = async (_req: Request, _res: Response, _next: NextFunction): Promise<void> => {
   try {
     await getConnection();
   } catch (e) {
@@ -14,7 +15,7 @@ export const connect = async (req, res, next): Promise<void> => {
     }
   }
 
-  next();
+  _next();
 };
 
 // export const close = async (req, res, next): Promise<void> => {

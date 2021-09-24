@@ -1,9 +1,10 @@
 import Library from "../lib/intent";
 import { Reply } from "../entity/reply";
 import HttpError from "../errors/http-error";
+import { IntentBody } from "../types/IntentBody";
 
 export default class {
-  async getIntent(body) {
+  async getIntent(body: IntentBody): Promise<string> {
     const lib = this._getLib();
     const data = await lib.get(body);
     const intent: string = data["intents"][0]["name"];

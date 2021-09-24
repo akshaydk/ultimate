@@ -1,29 +1,30 @@
-import { Response, Request, NextFunction } from "express";
+import { Response, Request } from "express";
 import Serializer from "../serializers/intent";
 import Service from "../services/intent";
 import isEmpty from "lodash/isEmpty";
 import HttpError from "../errors/http-error";
-
-type Body = {
-  botId: string;
-  message: string;
-};
+import { IntentBody } from "../types/IntentBody";
 
 export default class Controller {
-  intent = async (req: Request, res: Response) => {
+  intent = async (req: Request, res: Response) : Promise<Response>  => {
     const service = this._getService();
     const serializer = this._getSerializer();
     const body = req.body;
 
     try {
-      const deserializedBody: Body = await serializer.deserialize(body);
+      const deserializedBody: IntentBody = await serializer.deserialize(
+        "intentBody",
+        body
+      );
 
       if (isEmpty(deserializedBody["botId"])) {
-        throw new HttpError(422, 'Bot Id cannot be empty');
+        throw new HttpError(422, "Bot Id cannot be empty");
       }
 
       const result = await service.getIntent(deserializedBody);
-      const serializedResponse = await serializer.serialize({ reply: result });
+      const serializedResponse = await serializer.serialize("intentReply", {
+        reply: result,
+      });
 
       return res.status(200).json(serializedResponse);
     } catch (e) {

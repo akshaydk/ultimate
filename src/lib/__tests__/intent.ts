@@ -45,10 +45,10 @@ describe("#Get Intent", () => {
     };
 
     (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response("", {
-          status: 400,
-          statusText: "Bad Request",
-        })
+      new Response("", {
+        status: 400,
+        statusText: "Bad Request",
+      })
     );
 
     expect(async () => { await lib.get(body)}).toThrowError
@@ -61,10 +61,10 @@ describe("#Get Intent", () => {
     };
 
     (fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce(
-        new Response("", {
-          status: 403,
-          statusText: "Unauthorized",
-        })
+      new Response("", {
+        status: 403,
+        statusText: "Unauthorized",
+      })
     );
 
     expect(async () => await lib.get(body)).toThrowError
