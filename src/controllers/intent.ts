@@ -33,7 +33,7 @@ export default class Controller {
 
       return res.status(200).json(serializedResponse);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return res.status(e.code).json(e.message);
     }
   };

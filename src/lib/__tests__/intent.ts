@@ -38,7 +38,7 @@ describe('#Get Intent', () => {
     expect(JSON.stringify(res)).toBe(JSON.stringify(expected));
   });
 
-  it('raise and exception with API response bad request', async () => {
+  it('raise an exception when API response is Bad Request', async () => {
     const body = {
       botId: faker.datatype.string(10),
       message: faker.datatype.string(10),
@@ -54,7 +54,7 @@ describe('#Get Intent', () => {
     expect(async () => { await lib.get(body)}).toThrowError
   });
 
-  it('raise and exception with API response is unauthorized', async () => {
+  it('raise an exception when API response is unauthorized', async () => {
     const body = {
       botId: faker.datatype.string(10),
       message: faker.datatype.string(10),
