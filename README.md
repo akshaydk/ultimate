@@ -10,7 +10,10 @@ I wanted to get a working solution first and refactor next. The project was divi
 - Fetch the reply from data store
 - Exception handling
 - Adding specs
-- Linting and adding documentation
+- Started documentation
+- Added type safety to serializers
+- Solved all linting errors
+- Setup Github Actions
  
 ## Architecture Diagram
 <img width="416" alt="Basic Arch" src="https://user-images.githubusercontent.com/13963969/134550800-c92341ba-585f-4e61-83d5-cf563aa673b8.png">
@@ -102,18 +105,20 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
   - Custom exception have been raised throughout the application which are propagated back to the controller. 
   - We can push the exceptions to any monitoring service. (DataDog, AWS Cloudtrail).
 
-- ### Docker
-  - For the sake of assignment I didn't want to get into the containarizing the application. Ideally, I would be inclined to containarize any application that goes to production.
-
 - ### Specs
   - Unit tests are written for controllers, services and library.
   - I aimed for 100% coverarge of business logic. 
+
+- ### Github Actions
+  - Currenlty there's one workflow, which is triggered on push to master, to build and run the tests in github actions
+
+- ### Docker
+  - For the sake of assignment I didn't want to get into the containarizing the application. Ideally, I would be inclined to containarize any application that goes to production.
 
 ## ToDo
 - Logging
 - Use Inversify for dependecy injection. (felt like an overkill for single API)
 - Authorization
-- Github actions to build and test
 - Dockerize the application
 - Add more tests
 - Database seeder file to load the data
