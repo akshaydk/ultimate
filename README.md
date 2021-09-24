@@ -14,10 +14,18 @@ I wanted to get a working solution first and refactor next. The project was divi
 - Added type safety to serializers
 - Solved all linting errors
 - Setup Github Actions
- 
-## Architecture Diagram
-<img width="416" alt="Basic Arch" src="https://user-images.githubusercontent.com/13963969/134550800-c92341ba-585f-4e61-83d5-cf563aa673b8.png">
 
+## Technologies Used
+- Typescript
+- Nodejs
+- Express
+- Jest(for testing)
+- TypeORM
+- MySQL
+- Json-api-serialiser
+- Helmet
+- Github
+ 
 ## API
 - `GET /api/v1/intent` -> returns a reply for the given message.
 
@@ -88,6 +96,9 @@ yarn lint
 yarn lint --fix #for fixing all the lint errors
 ```
 
+## Architecture Diagram
+<img width="416" alt="Basic Arch" src="https://user-images.githubusercontent.com/13963969/134550800-c92341ba-585f-4e61-83d5-cf563aa673b8.png">
+
 ## Folder Structure
 ### A top level brief of structure
     src
@@ -129,6 +140,13 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
 - ### Github Actions
   - Currenlty there's one workflow, which is triggered on push to master, to build and run the tests in github actions
 
+- ### Security
+  - Minimal security is achieved with helmet package. The rest of the security aspects could be looked in-depth while deciding the infrastructure.
+
+- ### Application Logging and Monitoring
+ - Currently, expection handling is the only logs in the application. We can use something like winston and push the logs to thrid party log aggregator.
+ - Application monitoring depends on the kind of infrastructure the team decides to use.
+
 - ### Docker
   - For the sake of assignment I didn't want to get into the containarizing the application. Ideally, I would be inclined to containarize any application that goes to production.
 
@@ -139,7 +157,7 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
 - Dockerize the application
 - Add more tests
 - Database seeder file to load the data
-- API documentation (Swagger)
+- API documentation (because there was only one endpoint, I documented everything in README)
 
 ## Things I am contemplating 
 - Deployment strategy
