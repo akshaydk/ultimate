@@ -2,9 +2,9 @@ import HttpError from '../http-error'
 
 describe('Http Error Tests', () => {
   let error: HttpError;
-  let expectedMessage = 'Not Found'
-  let expectedCode = 404
-  
+  const expectedMessage = 'Not Found'
+  const expectedCode = 404
+
   beforeAll(() => {
     error = new HttpError(expectedCode, expectedMessage)
   })
