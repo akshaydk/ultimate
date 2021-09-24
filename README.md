@@ -20,6 +20,7 @@ I wanted to get a working solution first and refactor next. The project was divi
 - Nodejs
 - Express
 - Jest(for testing)
+- node-fetch, faker, node-mocks-http for testing
 - TypeORM
 - MySQL
 - Json-api-serialiser
