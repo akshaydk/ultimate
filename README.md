@@ -115,8 +115,6 @@ yarn lint --fix #for fixing all the lint errors
     ├── types                  # Type definitions
     └── config files
 
-Note: I am disappointed at myself for not maintaining a proper commit history. Pushing everything in one commit is not my style.
-
 ## Architecture Notes
 
 - ### API Design: 
@@ -145,12 +143,12 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
   - Minimal security is achieved with helmet package. The rest of the security aspects could be looked in-depth while deciding the infrastructure.
 
 - ### Caching
- - We can implement caching to store the frequently used intents and their responses. 
- - Redis can be used.
+  - We can implement caching to store the frequently used intents and their responses. 
+  - Redis can be used.
 
 - ### Application Logging and Monitoring
- - Currently, expection handling is the only logs in the application. We can use something like winston and push the logs to thrid party log aggregator.
- - Application monitoring depends on the kind of infrastructure the team decides to use.
+  - Currently, expection handling is the only logs in the application. We can use something like winston and push the logs to thrid party log aggregator.
+  - Application monitoring depends on the kind of infrastructure the team decides to use.
 
 - ### Docker
   - For the sake of assignment I didn't want to get into the containarizing the application. Ideally, I would be inclined to containarize any application that goes to production.
@@ -168,3 +166,6 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
 - Deployment strategy
 - Rate limiting
 - Load testing
+
+
+Note: I am disappointed at myself for not maintaining a proper commit history. Pushing everything in one commit is not my style.
