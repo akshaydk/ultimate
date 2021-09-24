@@ -60,6 +60,12 @@ Runs the migrations
 yarn db migration:run
 ```
 
+From the mysql console, populate reply. We don't have a db seeder at the moment.
+
+```sh
+insert into reply (intent, reply) values (':add_intent', ':add_reply');
+```
+
 Start the server in watch mode
 
 ```sh
@@ -70,6 +76,16 @@ Run tests
 
 ```sh
 yarn test
+
+yarn test:coverage #for test coverage report
+```
+
+Linting
+
+```sh
+yarn lint
+
+yarn lint --fix #for fixing all the lint errors
 ```
 
 ## Folder Structure
@@ -108,6 +124,7 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
 - ### Specs
   - Unit tests are written for controllers, services and library.
   - I aimed for 100% coverarge of business logic. 
+  - More specs can be written to improve the coverage.
 
 - ### Github Actions
   - Currenlty there's one workflow, which is triggered on push to master, to build and run the tests in github actions
