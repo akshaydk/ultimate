@@ -109,7 +109,7 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
   - Unit tests are written for controllers, services and library.
   - I aimed for 100% coverarge of business logic. 
 
-- ### Githu bActios
+- ### Github Actions
   - Currenlty there's one workflow, which is triggered on push to master, to build and run the tests in github actions
 
 - ### Docker
