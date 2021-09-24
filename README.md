@@ -144,6 +144,10 @@ Note: I am disappointed at myself for not maintaining a proper commit history. P
 - ### Security
   - Minimal security is achieved with helmet package. The rest of the security aspects could be looked in-depth while deciding the infrastructure.
 
+- ### Caching
+ - We can implement caching to store the frequently used intents and their responses. 
+ - Redis can be used.
+
 - ### Application Logging and Monitoring
  - Currently, expection handling is the only logs in the application. We can use something like winston and push the logs to thrid party log aggregator.
  - Application monitoring depends on the kind of infrastructure the team decides to use.
